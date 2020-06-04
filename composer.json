@@ -2,6 +2,7 @@
     "name": "boxuk/qm-memcache-stats",
     "description": "WordPress plugin to provide Memcache Stats to the awesome Query Monitor plugin.",
     "license": "GPLv2",
+    "type": "wordpress-muplugin",
     "repositories":[
         {
             "type":"composer",
