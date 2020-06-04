@@ -4,13 +4,12 @@
  * Class QM_Collector_Memcache
  */
 class QM_Collector_Memcache_Stats extends QM_Collector {
-
 	public $id = 'memcache-stats';
 
 	/**
 	 * @return string
 	 */
-	public function name() {
+	public function name(): string {
 		return esc_html__( 'Memcache Stats', 'query-monitor' );
 	}
 
@@ -19,5 +18,4 @@ class QM_Collector_Memcache_Stats extends QM_Collector {
 	 */
 	public function process() {
 	}
-
 }

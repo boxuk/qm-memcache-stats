@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset name="QM Memcache Collector Ruleset">
+    <description>QM Memcache Collector Ruleset</description>
+    <exclude-pattern>/wp-content/*</exclude-pattern>
+    <exclude-pattern>/vendor/*</exclude-pattern>
+
+    <rule ref="PHPCompatibilityWP"/>
+
+    <rule ref="WordPress-Extra">
+        <exclude name="WordPress.WP.I18n.MissingTranslatorsComment"/>
+    </rule>
+</ruleset>

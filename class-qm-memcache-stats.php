@@ -13,14 +13,11 @@
  * Class QM_Collector_Memcache
  */
 class QM_Memcache_Stats {
-
 	public function __construct() {
-
 		if ( class_exists( 'QM_Collectors' ) ) {
 			$this->register_collector();
 			add_filter( 'qm/outputter/html', array( $this, 'register_output' ), 101, 1 );
 		}
-
 	}
 
 	/*
@@ -29,8 +26,8 @@ class QM_Memcache_Stats {
 	 * @return void
 	 */
 	private function register_collector() {
-			require_once( 'classes/QM_Collector_Memcache_Stats.php' );
-			QM_Collectors::add( new QM_Collector_Memcache_Stats() );
+		require_once 'classes/class-qm-collector-memcache-stats.php';
+		QM_Collectors::add( new QM_Collector_Memcache_Stats() );
 	}
 
 	/*
@@ -40,18 +37,23 @@ class QM_Memcache_Stats {
 	 *
 	 * @return array
 	 */
-	public function register_output( $output ) {
-		require_once( 'classes/QM_Output_Memcache_Stats.php' );
+	public function register_output( array $output ): array {
+		require_once 'classes/class-qm-output-memcache-stats.php';
 
-		if ( $collector = QM_Collectors::get( 'memcache-stats' ) ) {
+		$collector = QM_Collectors::get( 'memcache-stats' );
+		if ( isset( $collector ) ) {
 			$output['memcache'] = new QM_Output_Memcache_Stats( $collector );
 		}
 
 		return $output;
 	}
-
 }
 
-add_action( 'plugins_loaded', function () {
-	new QM_Memcache_Stats();
-}, 10, 0 );
+add_action(
+	'plugins_loaded',
+	function () {
+		new QM_Memcache_Stats();
+	},
+	10,
+	0
+);
