@@ -27,7 +27,7 @@ class QM_Output_Memcache_Stats extends QM_Output_Html {
 		echo '<thead>';
 		echo '<tr>';
 		foreach ( $wp_object_cache->stats as $stat => $n ) {
-			echo '<th scope="col">' . sprintf( esc_html__( 'Memcache %s', 'query-monitor' ) ) . '</th>';
+			echo '<th scope="col">' . sprintf( esc_html__( 'Memcache %s', 'query-monitor' ), esc_html( $stat ) ) . '</th>';
 		}
 		echo '</tr>';
 		echo '</thead>';
@@ -43,7 +43,7 @@ class QM_Output_Memcache_Stats extends QM_Output_Html {
 			echo '<table>';
 			echo '<thead>';
 			echo '<tr>';
-			echo '<th>' . sprintf( esc_html__( 'Memcache %s commands', 'query-monitor' ) ) . '</th>';
+			echo '<th>' . sprintf( esc_html__( 'Memcache %s commands', 'query-monitor' ), esc_html( $group ) ) . '</th>';
 			echo '<th>' . esc_html__( 'Called', 'query-monitor' ) . '</th>';
 			echo '</tr>';
 			echo '</thead>';
