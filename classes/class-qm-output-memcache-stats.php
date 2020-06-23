@@ -49,6 +49,15 @@ class QM_Output_Memcache_Stats extends QM_Output_Html {
 			echo '</thead>';
 			echo '<tbody>';
 
+			// Remove non-string/integer values from the $ops array, as this can cause issues
+			// with the use of `array_count_values` below.
+			$ops = array_filter(
+				$ops,
+				function( $op ) {
+					return is_integer( $op ) || is_string( $op );
+				}
+			);
+
 			$ops_count = array_count_values( $ops );
 			$ops       = array_unique( $ops );
 			foreach ( $ops as $op ) {
